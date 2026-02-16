@@ -33,8 +33,8 @@ export default function Navbar() {
           <Link href="/notes" className={linkClasses("/notes")}>
             Notes
           </Link>
-          <Link href="https://www.linkedin.com/in/sarfrazcodes/" target="_blank" className={linkClasses("https://www.linkedin.com/in/sarfrazcodes/")}>
-            LinkedIn
+          <Link href="/contact" className={linkClasses("/contact")}>
+            Contact Me
           </Link>
         </div>
       </div>
