@@ -1,217 +1,160 @@
 export const cIOFunctionsNotes = {
-  title: "C Programming - Input / Output Functions",
+  title: "C Programming — Input / Output Functions",
+  description: "Detailed explanation of formatted and unformatted I/O functions in C.",
+
   sections: [
     {
-      heading: "1. Overview of I/O in C",
-      content: `
-Input/Output (I/O) in C allows programs to:
-- Take input from the user
-- Display output to the screen
-
-C provides two types of I/O:
-1. Unformatted I/O
-2. Formatted I/O
-      `,
+      heading: "Introduction to I/O in C",
+      content: [
+        "Input/Output (I/O) allows programs to take data from the user and display results.",
+        "C provides two types of I/O functions: Unformatted and Formatted.",
+        "All standard I/O functions are declared in stdio.h."
+      ],
     },
 
     {
-      heading: "2. Unformatted I/O Functions",
-      content: `
-Header Files:
-- #include <stdio.h>
-- #include <conio.h> (Non-standard)
+      heading: "Unformatted I/O Functions",
+      content: [
+        "Unformatted I/O functions do not use format specifiers.",
+        "They mainly work with characters and strings.",
+        "They are simpler and operate at a lower level compared to formatted I/O."
+      ],
+    },
 
-Concept:
-- No format specifiers
-- Mostly character or string based
-- Simpler and low-level operations
-      `,
-      subsections: [
-        {
-          title: "getchar()",
-          description: `
-Reads one character from standard input.
-Buffered input (requires Enter).
-Returns int to support EOF.
-Equivalent to: getc(stdin)
-          `,
-          example: `
-#include <stdio.h>
+    {
+      heading: "getchar() and putchar()",
+      content: [
+        "getchar() reads one character from standard input (stdin).",
+        "It returns int to support EOF detection.",
+        "putchar() prints a single character to standard output (stdout).",
+        "getchar() is equivalent to getc(stdin).",
+        "putchar() is equivalent to putc(character, stdout)."
+      ],
+      code: `#include <stdio.h>
 
 int main() {
     char ch;
     printf("Enter a character: ");
     ch = getchar();
-    printf("You entered: %c", ch);
+    printf("You entered: %c\\n", ch);
     return 0;
-}
-          `,
-        },
-        {
-          title: "putchar()",
-          description: `
-Prints a single character to standard output.
-Equivalent to: putc(ch, stdout)
-Faster than printf for single characters.
-          `,
-          example: `
-#include <stdio.h>
+}`
+    },
+
+    {
+      heading: "puts() and gets()",
+      content: [
+        "puts() prints a string and automatically adds a newline.",
+        "gets() was used to read strings but was removed in C11.",
+        "gets() caused buffer overflow because it did not check size.",
+        "fgets() is the safer alternative."
+      ],
+      code: `#include <stdio.h>
 
 int main() {
-    putchar('H');
-    putchar('i');
+    char name[20];
+    fgets(name, sizeof(name), stdin);
+    puts(name);
     return 0;
-}
-          `,
-        },
-        {
-          title: "puts()",
-          description: `
-Prints a string and automatically adds a newline.
-          `,
-          example: `
-#include <stdio.h>
+}`
+    },
 
-int main() {
-    puts("Hello World");
-    return 0;
-}
-          `,
-        },
-        {
-          title: "gets() (Removed in C11)",
-          description: `
-Reads a string until newline.
-Does not check buffer size.
-Causes buffer overflow.
-Use fgets() instead.
-          `,
-        },
-        {
-          title: "getch() and getche() (Non-standard)",
-          description: `
-Declared in <conio.h>.
-getch() - Reads character without displaying it.
-getche() - Reads and displays character.
-Unbuffered input.
-          `,
-        },
+    {
+      heading: "getch() and getche() (Non-Standard)",
+      content: [
+        "Declared in conio.h (not part of standard C).",
+        "getch() reads a character without displaying it.",
+        "getche() reads and displays the character.",
+        "These functions are unbuffered and do not require Enter."
       ],
     },
 
     {
-      heading: "3. Formatted I/O Functions",
-      content: `
-Header File:
-- #include <stdio.h>
+      heading: "Formatted I/O Functions",
+      content: [
+        "Formatted I/O uses format specifiers like %d, %f, %c, %s.",
+        "They provide control over how data is displayed or read.",
+        "Declared in stdio.h."
+      ],
+    },
 
-Concept:
-- Uses format specifiers
-- Allows control over input/output format
-- Supports multiple data types
-      `,
-      subsections: [
-        {
-          title: "printf()",
-          description: `
-Prints formatted output using format specifiers.
-
-Common specifiers:
-%d - int
-%f - float
-%lf - double
-%c - char
-%s - string
-          `,
-          example: `
-#include <stdio.h>
+    {
+      heading: "printf()",
+      content: [
+        "printf() prints formatted output.",
+        "It supports format specifiers like %d (int), %f (float), %c (char), %s (string).",
+        "It allows precision control like %.2f."
+      ],
+      code: `#include <stdio.h>
 
 int main() {
     int age = 20;
     float marks = 88.5;
+
     printf("Age = %d\\n", age);
     printf("Marks = %.2f", marks);
     return 0;
-}
-          `,
-        },
-        {
-          title: "scanf()",
-          description: `
-Reads formatted input.
-Requires address operator (&) except for strings.
-Leaves newline in buffer.
-          `,
-          example: `
-#include <stdio.h>
+}`
+    },
+
+    {
+      heading: "scanf()",
+      content: [
+        "scanf() reads formatted input from the user.",
+        "It requires the address operator (&) for variables except strings.",
+        "It may leave newline characters in the input buffer."
+      ],
+      code: `#include <stdio.h>
 
 int main() {
     int age;
     scanf("%d", &age);
     printf("Age: %d", age);
     return 0;
-}
-          `,
-        },
-        {
-          title: "sprintf()",
-          description: `
-Writes formatted output into a string instead of printing.
-          `,
-          example: `
-#include <stdio.h>
+}`
+    },
+
+    {
+      heading: "sprintf() and sscanf()",
+      content: [
+        "sprintf() writes formatted data into a string instead of printing.",
+        "sscanf() reads formatted data from a string.",
+        "Both are useful for string processing."
+      ],
+      code: `#include <stdio.h>
 
 int main() {
     char buffer[50];
-    sprintf(buffer, "Score: %d", 90);
-    printf("%s", buffer);
-    return 0;
-}
-          `,
-        },
-        {
-          title: "sscanf()",
-          description: `
-Reads formatted data from a string.
-          `,
-          example: `
-#include <stdio.h>
-
-int main() {
-    char data[] = "10 20";
     int a, b;
+
+    sprintf(buffer, "Sum: %d", 50);
+    printf("%s\\n", buffer);
+
+    char data[] = "10 20";
     sscanf(data, "%d %d", &a, &b);
+
     return 0;
-}
-          `,
-        },
+}`
+    },
+
+    {
+      heading: "Key Differences",
+      content: [
+        "Unformatted I/O does not use format specifiers.",
+        "Formatted I/O provides better control over data formatting.",
+        "Unformatted functions are simpler but limited.",
+        "Formatted functions support multiple data types."
       ],
     },
 
     {
-      heading: "4. Key Differences",
-      content: `
-Unformatted I/O:
-- No format specifiers
-- Limited data type handling
-- Simpler and low-level
-
-Formatted I/O:
-- Uses format specifiers
-- Supports multiple data types
-- More control over structure and precision
-      `,
-    },
-
-    {
-      heading: "5. Advanced Insights",
-      content: `
-- getchar() returns int for EOF handling
-- gets() was removed due to security vulnerabilities
-- printf() has more overhead than putchar()
-- scanf() may leave newline characters in input buffer
-- All standard I/O operates using streams: stdin, stdout, stderr
-      `,
-    },
-  ],
+      heading: "Advanced Insights",
+      content: [
+        "getchar() returns int to properly detect EOF.",
+        "gets() was removed due to security vulnerabilities.",
+        "printf() has more overhead than putchar().",
+        "All standard I/O works using streams: stdin, stdout, stderr."
+      ],
+    }
+  ]
 };

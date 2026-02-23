@@ -13,11 +13,11 @@ export default async function NotePage({ params }: Props) {
   const { slug } = await params;
 
   const notesMap: any = {
+  "c-io-functions": cIOFunctionsNotes,
   "dsa-basics": dsaBasics,
   "recursion-basics": recursionBasics,
   "c-basics": cBasics,
   "python-basics": pythonBasics,
-  "c-io-functions": cIOFunctionsNotes,
 };
 
   const note = notesMap[slug];
