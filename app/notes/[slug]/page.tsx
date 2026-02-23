@@ -3,6 +3,7 @@ import { dsaBasics } from "@/content/dsaBasics";
 import { cBasics } from "@/content/cBasics";
 import { pythonBasics } from "@/content/pythonBasics";
 import { recursionBasics } from "@/content/recursionBasics";
+import { cIOFunctionsNotes } from "@/content/cIOFunctionsNotes";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -16,6 +17,7 @@ export default async function NotePage({ params }: Props) {
   "recursion-basics": recursionBasics,
   "c-basics": cBasics,
   "python-basics": pythonBasics,
+  "c-io-functions": cIOFunctionsNotes,
 };
 
   const note = notesMap[slug];

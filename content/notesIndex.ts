@@ -23,4 +23,10 @@ export const notesIndex = [
   description: "Introduction to Python programming.",
   slug: "python-basics",
 },
+{
+  title: "C Programming — Input / Output Functions",
+  description: "Detailed notes on formatted and unformatted I/O in C.",
+  slug: "c-io-functions",
+  level: "Beginner",
+},
 ];
