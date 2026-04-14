@@ -24,6 +24,9 @@ export default function Navbar() {
           <Link href="/" className={linkClasses("/")}>
             Home
           </Link>
+          <Link href="/skills" className={linkClasses("/skills")}>
+            Skills
+          </Link>
           <Link href="/projects" className={linkClasses("/projects")}>
             Projects
           </Link>
